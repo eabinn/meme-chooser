@@ -26,9 +26,7 @@
     </section>
 
     <section class="result">
-      <button class="result-btn result-btn--goback" @click="goBackToSelect">
-        GO BACK TO CATEGORY
-      </button>
+      <button class="result-btn result-btn--goback" @click="goBackToSelect">GO BACK TO CATEGORY</button>
 
       <canvas></canvas>
 
@@ -42,9 +40,7 @@
       </div>
 
       <div class="result-action">
-        <button class="result-btn result-btn--copylink" @click="CopyShareUrl">
-          Copy Share URL
-        </button>
+        <button class="result-btn result-btn--copylink" @click="CopyShareUrl">Copy Share URL</button>
         <div class="tooltip">Copied to Clipboard</div>
       </div>
     </section>
