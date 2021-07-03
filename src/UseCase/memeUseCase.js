@@ -1,4 +1,4 @@
-import axios from "axios";
+import memeApi from "../api/memeApi";
 
 const memeUseCase = {
   copyUrl: () => {
@@ -26,12 +26,7 @@ const memeUseCase = {
     selectSection.classList.remove("show");
     resultSection.classList.add("show");
 
-    axios.get(`https://g.tenor.com/v1/search?q=${category}&key=LIVDSRZULELA&limit=50`).then((res) => {
-      const result = res.data.results[Math.floor(Math.random() * 50)].media[0].tinygif.url;
-      const img = document.querySelector(".result-wrapper img");
-      img.classList.add("show");
-      img.src = result;
-    });
+    memeApi.GET_ITEM(category);
   },
 };
 
