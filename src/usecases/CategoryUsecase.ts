@@ -1,12 +1,8 @@
 import axios from "axios";
-
-interface Category {
-  term: string;
-  gifUrl: string;
-}
+import CategoryType from "@/types/CategoryType";
 
 class CategoryDataMapper {
-  data: Category;
+  data: CategoryType;
 
   constructor(rawData: any) {
     this.data = { term: rawData.searchterm, gifUrl: rawData.image };
@@ -20,7 +16,7 @@ class CategoryDataMapper {
 class CategoryUsecase {
   async getAll() {
     const result: any = await axios.get("https://g.tenor.com/v1/categories?key=LIVDSRZULELA");
-    const categories: Array<Category> = result.data.tags.map((tag: any) => {
+    const categories: Array<CategoryType> = result.data.tags.map((tag: any) => {
       return new CategoryDataMapper(tag).get();
     });
 
