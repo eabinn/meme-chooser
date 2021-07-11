@@ -5,7 +5,7 @@ class MemeRepository {
     return await ApiClient.shared.execute({
       method: "GET",
       path: "/search",
-      params: { q: category, key: "LIVDSRZULELA", limit: 50 },
+      params: { q: category, key: process.env.VUE_APP_API_KEY, limit: 50 },
     });
   }
 }
