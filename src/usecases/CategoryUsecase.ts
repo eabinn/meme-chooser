@@ -1,4 +1,4 @@
-import axios from "axios";
+import CategoryRepository from "@/repositories/CategoryRepository";
 import CategoryType from "@/types/CategoryType";
 
 class CategoryDataMapper {
@@ -15,7 +15,7 @@ class CategoryDataMapper {
 
 class CategoryUsecase {
   async getAll() {
-    const result: any = await axios.get("https://g.tenor.com/v1/categories?key=LIVDSRZULELA");
+    const result: any = await new CategoryRepository().getAll();
     const categories: Array<CategoryType> = result.data.tags.map((tag: any) => {
       return new CategoryDataMapper(tag).get();
     });

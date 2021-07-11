@@ -1,5 +1,5 @@
-import axios from "axios";
 import MemeType from "@/types/MemeType";
+import MemeRepository from "@/repositories/MemeRepository";
 
 class MemeDataMapper {
   data: MemeType;
@@ -15,7 +15,7 @@ class MemeDataMapper {
 
 class MemeUsecase {
   async get(category: string) {
-    const result: any = await axios.get(`https://g.tenor.com/v1/search?q=${category}&key=LIVDSRZULELA&limit=50`);
+    const result: any = await new MemeRepository().get(category);
     const meme = new MemeDataMapper(result.data.results[Math.floor(Math.random() * 50)]).get();
 
     return meme;
