@@ -1,7 +1,11 @@
 import ApiClient from "@/network/ApiClient";
 
-class MemeRepository {
-  async get(category: string) {
+abstract class MemeRepository {
+  abstract get(category: string): Promise<any>;
+}
+
+class MemeRepositoryImpl extends MemeRepository {
+  async get(category: string): Promise<any> {
     return await ApiClient.shared.execute({
       method: "GET",
       path: "/search",
@@ -10,4 +14,4 @@ class MemeRepository {
   }
 }
 
-export default MemeRepository;
+export { MemeRepository, MemeRepositoryImpl };

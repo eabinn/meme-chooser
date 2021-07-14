@@ -27,6 +27,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import MemeUsecase from "@/usecases/MemeUsecase";
+import { MemeRepositoryImpl } from "@/repositories/MemeRepository";
 
 export default defineComponent({
   name: "Result",
@@ -57,7 +58,7 @@ export default defineComponent({
   },
   async mounted() {
     this.category = this.$route.query.category;
-    this.meme = await new MemeUsecase().get(this.category);
+    this.meme = await new MemeUsecase(new MemeRepositoryImpl()).get(this.category);
     console.log(this.meme.gifUrl);
   },
 });
