@@ -5,7 +5,7 @@ class MemeDataMapper {
   data: MemeType;
 
   constructor(rawData: any) {
-    this.data = { gifUrl: rawData.media[0].tinygif.url };
+    this.data = { gifUrl: rawData.data.results[Math.floor(Math.random() * 50)].media[0].tinygif.url };
   }
 
   get(): MemeType {
@@ -21,10 +21,7 @@ class MemeUsecase {
   }
 
   async get(category: string) {
-    const result: any = await this.memeRepository.get(category);
-    const meme = new MemeDataMapper(result.data.results[Math.floor(Math.random() * 50)]).get();
-
-    return meme;
+    return new MemeDataMapper(await this.memeRepository.get(category)).get();
   }
 }
 
