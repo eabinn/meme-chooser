@@ -1,4 +1,4 @@
-import CategoryRepository from "@/repositories/CategoryRepository";
+import { CategoryRepository } from "@/repositories/CategoryRepository";
 import CategoryType from "@/types/CategoryType";
 
 class CategoryDataMapper {
@@ -14,8 +14,15 @@ class CategoryDataMapper {
 }
 
 class CategoryUsecase {
+  private categoryRepository: CategoryRepository;
+
+  constructor(categoryRepository: CategoryRepository) {
+    this.categoryRepository = categoryRepository;
+  }
+
   async getAll() {
-    const result: any = await new CategoryRepository().getAll();
+    const result: any = await this.categoryRepository.getAll();
+
     const categories: Array<CategoryType> = result.data.tags.map((tag: any) => {
       return new CategoryDataMapper(tag).get();
     });

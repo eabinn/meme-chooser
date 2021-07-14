@@ -14,6 +14,7 @@
 import { defineComponent } from "vue";
 import Category from "@/components/Category.vue";
 import CategoryUsecase from "@/usecases/CategoryUsecase";
+import { CategoryRepositoryImpl } from "@/repositories/CategoryRepository";
 
 interface CategoryType {
   term: string;
@@ -29,7 +30,7 @@ export default defineComponent({
     };
   },
   async mounted() {
-    const data: any = await new CategoryUsecase().getAll();
+    const data: any = await new CategoryUsecase(new CategoryRepositoryImpl()).getAll();
     data.forEach((item: any) => this.categories.push(item));
   },
 });
