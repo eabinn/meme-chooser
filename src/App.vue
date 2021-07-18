@@ -1,16 +1,12 @@
 <template>
-  <Hello />
+  <router-view />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import Hello from './components/Hello.vue';
+<script lang="js">
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'App',
-  components: {
-    Hello,
-  },
+  name: "App",
 });
 </script>
 

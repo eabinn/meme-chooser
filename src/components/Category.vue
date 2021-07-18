@@ -1,11 +1,13 @@
 <template>
-  <div class="category" v-on:click="$emit('select', title)">
-    <div class="content">
-      <img :src="image" />
-    </div>
-    <div class="title">
-      <h3>{{ title }}</h3>
-    </div>
+  <div class="category">
+    <router-link :to="'/result?category=' + term">
+      <div class="content">
+        <img :src="gifUrl" />
+      </div>
+      <div class="title">
+        <h3>{{ term }}</h3>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -14,7 +16,10 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Category',
-  props: ['title', 'image', 'select']
+  props: {
+    term: String,
+    gifUrl: String,
+  }
 });
 </script>
 
